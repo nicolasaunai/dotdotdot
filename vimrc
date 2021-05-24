@@ -46,14 +46,14 @@ filetype plugin indent on
 " ---------------------------------------------------------------
 
 
-source /home/aunai/.config/vim/gitgutter.vim
-source /home/aunai/.config/vim/cmake4vim.vim
-source /home/aunai/.config/vim/nerdtree.vim
-source /home/aunai/.config/vim/cocvim.vim
-source /home/aunai/.config/vim/tagbar.vim
-source /home/aunai/.config/vim/ctrlsf.vim
-source /home/aunai/.config/vim/vimspector.vim
-source /home/aunai/.config/vim/stripwhitespace.vim
+source ~/.config/vim/gitgutter.vim
+source ~/.config/vim/cmake4vim.vim
+source ~/.config/vim/nerdtree.vim
+source ~/.config/vim/cocvim.vim
+source ~/.config/vim/tagbar.vim
+source ~/.config/vim/ctrlsf.vim
+source ~/.config/vim/vimspector.vim
+source ~/.config/vim/stripwhitespace.vim
 
 
 
