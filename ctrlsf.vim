@@ -3,7 +3,7 @@
 " Use the ag tool as the backend
 let g:ctrlsf_backend = 'ag'
 " Auto close the results panel when opening a file
-let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
+let g:ctrlsf_auto_close = { "compact":0, "normal":0 }
 " Immediately switch focus to the search window
 let g:ctrlsf_auto_focus = { "at":"start" }
 " Don't open the preview window automatically

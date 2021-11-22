@@ -1,10 +1,5 @@
 
 
-" transparent bg
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-" For Vim<8, replace EndOfBuffer by NonText
-autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
-
 
 "                       plugins
 " ---------------------------------------------------------------
@@ -54,6 +49,7 @@ source /home/aunai/.config/vim/tagbar.vim
 source /home/aunai/.config/vim/ctrlsf.vim
 source /home/aunai/.config/vim/vimspector.vim
 source /home/aunai/.config/vim/stripwhitespace.vim
+source /home/aunai/.config/vim/cocexplorer.vim
 
 
 
@@ -158,6 +154,11 @@ set shortmess+=c
 
 "------------------------------------------------------------------------------
 
+" transparent bg
+"autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" For Vim<8, replace EndOfBuffer by NonText
+"autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+
 
 function! ReTab()
   let &tabstop = &shiftwidth
@@ -190,7 +191,11 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 
+" Edit Vim config file in a new tab.
+map <Leader>ev :tabnew $MYVIMRC<CR>
 
+" Source Vim config file.
+map <Leader>sv :source $MYVIMRC<CR>
 
 
 
@@ -198,4 +203,5 @@ autocmd FileType cpp ClangFormatAutoEnable
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format_on_insert_leave=1
 
-
+" samrai C files recognized as cpp
+autocmd BufReadPre *.C set ft=cpp
