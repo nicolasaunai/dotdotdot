@@ -41,15 +41,16 @@ filetype plugin indent on
 " ---------------------------------------------------------------
 
 
-source /home/aunai/.config/vim/gitgutter.vim
-source /home/aunai/.config/vim/cmake4vim.vim
-source /home/aunai/.config/vim/nerdtree.vim
-source /home/aunai/.config/vim/cocvim.vim
-source /home/aunai/.config/vim/tagbar.vim
-source /home/aunai/.config/vim/ctrlsf.vim
-source /home/aunai/.config/vim/vimspector.vim
-source /home/aunai/.config/vim/stripwhitespace.vim
-source /home/aunai/.config/vim/cocexplorer.vim
+source /home/aunai/.config/dotfiles/vim/gitgutter.vim
+source /home/aunai/.config/dotfiles/vim/cmake4vim.vim
+source /home/aunai/.config/dotfiles/vim/nerdtree.vim
+source /home/aunai/.config/dotfiles/vim/cocvim.vim
+source /home/aunai/.config/dotfiles/vim/tagbar.vim
+source /home/aunai/.config/dotfiles/vim/ctrlsf.vim
+source /home/aunai/.config/dotfiles/vim/vimspector.vim
+source /home/aunai/.config/dotfiles/vim/stripwhitespace.vim
+source /home/aunai/.config/dotfiles/vim/cocexplorer.vim
+source /home/aunai/.config/dotfiles/vim/fugitive.vim
 
 
 
@@ -84,7 +85,6 @@ set scrolloff=10
 set viewoptions-=options        " do not take options into acount when saving
 set colorcolumn=80              " show column 80
 highlight colorcolumn guibg=#A3D3DB
-set clipboard=unnamed
 set nohlsearch
 set backspace=indent,eol,start
 set background=dark
@@ -125,6 +125,13 @@ filetype plugin indent on
 " terminal
 set termwinsize=12x0   " Set terminal size
 set splitbelow         " Always split below
+
+" splits
+nnoremap <Leader>cl :close<CR>
+nnoremap <Leader>v :vs<CR><C-w>l
+nnoremap <Leader>h :sp<CR>
+
+
 
 
 " invisible characters
@@ -182,7 +189,10 @@ set fdc =2                                              " put a vertical bar ind
 
 
 
-
+" yank into clipboard
+set clipboard=unnamedplus
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
 
 
 
