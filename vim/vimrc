@@ -26,7 +26,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'dyng/ctrlsf.vim'
 Plug 'derekwyatt/vim-protodef'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
@@ -36,6 +36,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'puremourning/vimspector'
 Plug 'ilyachur/cmake4vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'chengzeyi/fzf-preview.vim'
 call plug#end()
 filetype plugin indent on
 " ---------------------------------------------------------------
@@ -49,8 +52,9 @@ source /home/aunai/.config/dotfiles/vim/tagbar.vim
 source /home/aunai/.config/dotfiles/vim/ctrlsf.vim
 source /home/aunai/.config/dotfiles/vim/vimspector.vim
 source /home/aunai/.config/dotfiles/vim/stripwhitespace.vim
-source /home/aunai/.config/dotfiles/vim/cocexplorer.vim
+"source /home/aunai/.config/dotfiles/vim/cocexplorer.vim
 source /home/aunai/.config/dotfiles/vim/fugitive.vim
+source /home/aunai/.config/dotfiles/vim/fzf.vim
 
 
 
@@ -97,11 +101,6 @@ set history=100                 " keeps 100 lines of command history
 set matchpairs+=<:>             " specifically for html
 
 
-"Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 
 " file name completion
@@ -122,14 +121,37 @@ set softtabstop=4
 filetype plugin indent on
 
 
+" --------- vimrc ------------------------------------------------------------
+nnoremap <Leader>so :source ~/.vimrc<cr>
+nnoremap <Leader>rc :e ~/.vimrc<cr>
+" ----------------------------------------------------------------------------
+
+
 " terminal
 set termwinsize=12x0   " Set terminal size
-set splitbelow         " Always split below
 
-" splits
+" --------- splits -----------------------------------------------------------
+"Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+set splitbelow         " Always split below
 nnoremap <Leader>cl :close<CR>
 nnoremap <Leader>v :vs<CR><C-w>l
 nnoremap <Leader>h :sp<CR>
+" Make adjusing split sizes a bit more friendly
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up> :resize +3<CR>
+noremap <silent> <C-Down> :resize -3<CR>
+
+" Change 2 split windows from vert to horiz or horiz to vert
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
+" ----------------------------------------------------------------------------
+
+
 
 
 
@@ -211,7 +233,12 @@ map <Leader>sv :source $MYVIMRC<CR>
 
 autocmd FileType cpp ClangFormatAutoEnable
 let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#auto_format_on_insert_leave=0
+let g:clang_format#auto_format=1
 
 " samrai C files recognized as cpp
 autocmd BufReadPre *.C set ft=cpp
+
+
+
+
