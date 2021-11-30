@@ -23,6 +23,7 @@ Plug 'morhetz/gruvbox'
 
 Plug 'derekwyatt/vim-fswitch'
 Plug 'preservim/nerdtree'
+Plug 'jeffkreeftmeijer/vim-numbertoggle' " no line number in nerdtree
 Plug 'preservim/tagbar'
 Plug 'dyng/ctrlsf.vim'
 Plug 'derekwyatt/vim-protodef'
@@ -39,22 +40,23 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'chengzeyi/fzf-preview.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 filetype plugin indent on
 " ---------------------------------------------------------------
 
 
+source /home/aunai/.config/dotfiles/vim/fzfconf.vim
 source /home/aunai/.config/dotfiles/vim/gitgutter.vim
-source /home/aunai/.config/dotfiles/vim/cmake4vim.vim
+"source /home/aunai/.config/dotfiles/vim/cmake4vim.vim
 source /home/aunai/.config/dotfiles/vim/nerdtree.vim
 source /home/aunai/.config/dotfiles/vim/cocvim.vim
 source /home/aunai/.config/dotfiles/vim/tagbar.vim
 source /home/aunai/.config/dotfiles/vim/ctrlsf.vim
-source /home/aunai/.config/dotfiles/vim/vimspector.vim
+"source /home/aunai/.config/dotfiles/vim/vimspector.vim
 source /home/aunai/.config/dotfiles/vim/stripwhitespace.vim
 "source /home/aunai/.config/dotfiles/vim/cocexplorer.vim
 source /home/aunai/.config/dotfiles/vim/fugitive.vim
-source /home/aunai/.config/dotfiles/vim/fzf.vim
 
 
 
@@ -122,8 +124,10 @@ filetype plugin indent on
 
 
 " --------- vimrc ------------------------------------------------------------
-nnoremap <Leader>so :source ~/.vimrc<cr>
-nnoremap <Leader>rc :e ~/.vimrc<cr>
+"nnoremap sv :source $MYVIMRC<cr>
+"nnoremap ev :e $MYVIMRC<cr>
+nnoremap sv :source ~/.vimrc<cr>
+nnoremap ev :e ~/.vimrc<cr>
 " ----------------------------------------------------------------------------
 
 
@@ -149,6 +153,7 @@ noremap <silent> <C-Down> :resize -3<CR>
 " Change 2 split windows from vert to horiz or horiz to vert
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
+nnoremap <Leader>w  :Buffers<CR>
 " ----------------------------------------------------------------------------
 
 
@@ -223,21 +228,40 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 
-" Edit Vim config file in a new tab.
-map <Leader>ev :tabnew $MYVIMRC<CR>
 
-" Source Vim config file.
-map <Leader>sv :source $MYVIMRC<CR>
-
-
+" -----------------------------------------------------------------------------
+"   CLANG FORMAT
+" -----------------------------------------------------------------------------
 
 autocmd FileType cpp ClangFormatAutoEnable
 let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format_on_insert_leave=0
-let g:clang_format#auto_format=1
+let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#auto_format=0
 
 " samrai C files recognized as cpp
 autocmd BufReadPre *.C set ft=cpp
+
+" somehow clang format messes with the cursor position
+" on undo. this is found in https://github.com/rhysd/vim-clang-format/issues/8
+"function! SafeUndo()
+"    let b:pos = getpos( '.')
+"    let b:view = winsaveview()
+"    undo
+"    call setpos('.', b:pos)
+"    call winrestview(b:view)
+"endfunc
+"
+"function! SafeRedo()
+"    let b:pos = getpos( '.' )
+"    let b:view = winsaveview()
+"    redo
+"    call setpos( '.', b:pos )
+"    call winrestview( b:view )
+"endfunc
+"
+"nnoremap u :call SafeUndo() <CR>
+"nnoremap <C-u> :call SafeRedo() <CR>
+" -----------------------------------------------------------------------------
 
 
 

@@ -9,8 +9,17 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=0
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeMinimalUI = 1
 "------------------------------------------------------------------------------
+"
+"
+set guifont=DroidSansMono
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
