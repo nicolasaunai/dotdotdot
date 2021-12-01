@@ -241,28 +241,20 @@ let g:clang_format#auto_format=0
 " samrai C files recognized as cpp
 autocmd BufReadPre *.C set ft=cpp
 
-" somehow clang format messes with the cursor position
-" on undo. this is found in https://github.com/rhysd/vim-clang-format/issues/8
-"function! SafeUndo()
-"    let b:pos = getpos( '.')
-"    let b:view = winsaveview()
-"    undo
-"    call setpos('.', b:pos)
-"    call winrestview(b:view)
-"endfunc
-"
-"function! SafeRedo()
-"    let b:pos = getpos( '.' )
-"    let b:view = winsaveview()
-"    redo
-"    call setpos( '.', b:pos )
-"    call winrestview( b:view )
-"endfunc
-"
-"nnoremap u :call SafeUndo() <CR>
-"nnoremap <C-u> :call SafeRedo() <CR>
 " -----------------------------------------------------------------------------
 
 
 
+" -----------------------------------------------------------------------------
+"   EDITING REMAPS
+" -----------------------------------------------------------------------------
+
+" moving lines up and down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> :m .+1<CR>==
+inoremap <C-k> :m ._2<CR>==
+nnoremap <Leader>k :m .-2<CR>==
+nnoremap <Leader>j :m .+1<CR>==
+" -----------------------------------------------------------------------------
 
