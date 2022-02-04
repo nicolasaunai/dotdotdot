@@ -85,7 +85,7 @@ set laststatus=2                " use 2 lines for the status bar
 set matchtime=2                 " show matching brackets for 0.2 seconds
 set incsearch                   " incremental search
 set noerrorbells                " no annoying sound on errors
-set path+=/usr/include/**,.,**  " add current dir to path and subdirs recursively
+set path+=/usr/include/**,/usr/include/openmpi-x86_64/**,.,**  " add current dir to path and subdirs recursively
 set mouse=a                     " cool for scrolling
 set scrolloff=10
 set viewoptions-=options        " do not take options into acount when saving
@@ -236,7 +236,7 @@ nnoremap <S-Tab> :bprevious<CR>
 autocmd FileType cpp ClangFormatAutoEnable
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format_on_insert_leave=1
-let g:clang_format#auto_format=0
+let g:clang_format#auto_format=1
 
 " samrai C files recognized as cpp
 autocmd BufReadPre *.C set ft=cpp
@@ -256,5 +256,22 @@ inoremap <C-j> :m .+1<CR>==
 inoremap <C-k> :m ._2<CR>==
 nnoremap <Leader>k :m .-2<CR>==
 nnoremap <Leader>j :m .+1<CR>==
+
+
+
+" cpp comment out the line
+nnoremap <Leader>cc I//<Esc>
+" uncomment that line
+nnoremap <Leader>uc :s/\/\//<CR>
+
 " -----------------------------------------------------------------------------
 
+
+
+
+" -----------------------------------------------------------------------------
+"  SEARCH
+" -----------------------------------------------------------------------------
+ set ignorecase
+ set smartcase
+" -----------------------------------------------------------------------------
