@@ -21,6 +21,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'scheakur/vim-scheakur'
 Plug 'morhetz/gruvbox'
 
+Plug 'will133/vim-dirdiff'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'preservim/nerdtree'
 Plug 'jeffkreeftmeijer/vim-numbertoggle' " no line number in nerdtree
